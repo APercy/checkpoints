@@ -24,7 +24,7 @@ minetest.register_craft({
 	output = "checkpoints:refuel",
 	recipe = {
 		{"", "default:steel_ingot", ""},
-		{"", "biofuel:biofuel", ""},
+		{"", "default:coal_lump", ""},
 		{"", "default:steel_ingot", ""},
 	},
 })
