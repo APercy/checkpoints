@@ -5,9 +5,28 @@ dofile(minetest.get_modpath("checkpoints") .. DIR_DELIM .. "start_point.lua")
 checkpoints.refuel_radius = 5 -- radius
 
 -- race restarter
-minetest.register_craftitem("checkpoints:status_restarter",{
-	description = "Race status restarter",
-	inventory_image = "status_restarter_inv.png",
+minetest.register_root("checkpoints:status_restarter",{
+    description = "Race status restarter",
+    inventory_image = "status_restarter_inv.png",
+    stack_max=1,
+    on_use = function(itemstack, player, pointed_thing)
+        if not player then
+            return
+        end
+        local name = player:get_player_name()
+
+        local is_admin = core.check_player_privs(player, {server=true})
+
+        --airutils.move_target(player, pointed_thing)
+        local object = pointed_thing.ref
+        local ent = object:get_luaentity()
+        if ent and ent._energy > -1 then
+            ent._last_checkpoint = ""
+            ent._total_laps = -1
+            ent._race_id = ""
+            return
+        end
+    end,
 })
 
 minetest.register_craft({
