@@ -94,9 +94,11 @@ end
 
 function checkpoints.end_race(pos, meta, player, player_grid_pos)
     --the race is over to you
-    local name = player:get_player_name()
-    minetest.chat_send_player(name, 'Race finished!!!!!')
-    minetest.chat_send_player(name, 'You finished in position ' .. player_grid_pos .. ".")
+    if player then
+        local name = player:get_player_name()
+        minetest.chat_send_player(name, 'Race finished!!!!!')
+        minetest.chat_send_player(name, 'You finished in position ' .. player_grid_pos .. ".")
+    end
 
     if player_grid_pos == 1 then
         --display the flag!!!!
