@@ -5,7 +5,7 @@ dofile(minetest.get_modpath("checkpoints") .. DIR_DELIM .. "start_point.lua")
 checkpoints.refuel_radius = 5 -- radius
 
 -- race restarter
-minetest.register_root("checkpoints:status_restarter",{
+minetest.register_tool("checkpoints:status_restarter",{
     description = "Race status restarter",
     inventory_image = "status_restarter_inv.png",
     stack_max=1,
