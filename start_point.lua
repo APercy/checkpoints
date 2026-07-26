@@ -253,7 +253,7 @@ minetest.register_node("checkpoints:start", {
         checkpoints.set_start_info(pos)
 
 		local timer = minetest.get_node_timer(pos)
-		timer:start(0.2)
+		timer:start(0.4)
 	end,
 
     on_timer = function(pos)
@@ -362,7 +362,7 @@ minetest.register_node("checkpoints:start", {
         end
 
         local timer = minetest.get_node_timer(pos)
-        timer:start(0.2)
+        timer:start(0.4)
 
 	end,
 
@@ -381,7 +381,7 @@ minetest.register_node("checkpoints:start", {
 
             --to prevent checkpoint lost by an error on server, restart it
             local timer = minetest.get_node_timer(pos)
-            timer:start(0.2)
+            timer:start(0.4)
         end
 	end,
 })
