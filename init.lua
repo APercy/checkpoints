@@ -19,12 +19,14 @@ minetest.register_tool("checkpoints:status_restarter",{
 
         --airutils.move_target(player, pointed_thing)
         local object = pointed_thing.ref
-        local ent = object:get_luaentity()
-        if ent and ent._energy > -1 then
-            ent._last_checkpoint = ""
-            ent._total_laps = -1
-            ent._race_id = ""
-            return
+        if object then
+            local ent = object:get_luaentity()
+            if ent and ent._energy > -1 then
+                ent._last_checkpoint = ""
+                ent._total_laps = -1
+                ent._race_id = ""
+                return
+            end
         end
     end,
 })
