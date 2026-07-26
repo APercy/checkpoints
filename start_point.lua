@@ -71,10 +71,8 @@ function checkpoints.set_race_id(pos, player)
     checkpoints.running_race = false
 
     meta:set_string("race_id", new_race_id)
-    local name = ""
     if player then
-        name = player:get_player_name()
-        core.chat_send_player(name, 'New race Id: ' .. new_race_id )
+        core.chat_send_player(player, 'New race Id: ' .. new_race_id )
     end
 
     local race_positions = { "", "", "", "", "", "", "", "", "", "" }
@@ -83,9 +81,8 @@ function checkpoints.set_race_id(pos, player)
     checkpoints.set_start_info(pos)
 
     minetest.sound_play("05_cursor1", {
-        to_player = name,
-        --pos = pos,
-        --max_hear_distance = checkpoints.radius,
+        pos = pos,
+        max_hear_distance = checkpoints.radius,
         gain = 1.0,
         fade = 0.0,
         pitch = 1.0,
@@ -95,9 +92,8 @@ end
 function checkpoints.end_race(pos, meta, player, player_grid_pos)
     --the race is over to you
     if player then
-        local name = player:get_player_name()
-        minetest.chat_send_player(name, 'Race finished!!!!!')
-        minetest.chat_send_player(name, 'You finished in position ' .. player_grid_pos .. ".")
+        minetest.chat_send_player(player, 'Race finished!!!!!')
+        minetest.chat_send_player(player, 'You finished in position ' .. player_grid_pos .. ".")
     end
 
     if player_grid_pos == 1 then
