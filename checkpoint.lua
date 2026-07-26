@@ -128,7 +128,7 @@ minetest.register_node("checkpoints:checkpoint", {
 
                             --minetest.chat_send_player(player, 'CHECKPOINT!')
                             minetest.sound_play("05_cursor1", {
-                                to_player = player,
+                                to_player = entity.driver_name,
                                 --pos = pos,
                                 --max_hear_distance = checkpoints.radius,
                                 gain = 1.0,
